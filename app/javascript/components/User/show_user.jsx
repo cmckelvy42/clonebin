@@ -9,6 +9,7 @@ import ErrorPage from "../Errors/error_page";
 import { clearErrors } from "../../actions/error_actions";
 import Moment from "moment";
 import { CalendarIcon, PencilIcon, PrivacyIcon, XIcon } from "../../util/fontawesome_icons";
+import NoticeMessages from "../Errors/notice_messages";
 
 const sortTypes = ["title","created_at","expiration_date","privacy"]
 
@@ -88,16 +89,21 @@ const ShowUser = () => {
         if (sortTypes.includes(sortCategory) || sortTypes.includes(sortCategory?.slice(1, sortCategory?.length))){
             sortPastes(sortCategory)
         }
-        pastes = pastes.map((paste, i) => (
-            <tr key={i}>
-                <td className="paste-title"><PrivacyIcon privacy={paste.privacy}/> <Link to={`/pastes/${paste.id}`}>{paste.title}</Link></td>
-                <td className="paste-date">{Moment(paste.created_at).format("MMM Do, YYYY")}</td>
-                <td className="paste-expiration">{paste.expiration_date ? Moment(paste.expiration_date).fromNow() : "Never"}</td>
-                <td className="td-right"><EditButton currentUser={currentUser} user={user} pasteId={paste.id}/>
-                <DeleteButton currentUser={currentUser} user={user} pasteId={paste.id}/></td>
-            </tr>
-        ))
-        
+        if (user.pastes.length > 0){
+            pastes = pastes.map((paste, i) => (
+                <tr key={i}>
+                    <td className="paste-title"><PrivacyIcon privacy={paste.privacy}/> <Link to={`/pastes/${paste.id}`}>{paste.title}</Link></td>
+                    <td className="paste-date">{Moment(paste.created_at).format("MMM Do, YYYY")}</td>
+                    <td className="paste-expiration">{paste.expiration_date ? Moment(paste.expiration_date).fromNow() : "Never"}</td>
+                    <td className="td-right"><EditButton currentUser={currentUser} user={user} pasteId={paste.id}/>
+                    <DeleteButton currentUser={currentUser} user={user} pasteId={paste.id}/></td>
+                </tr>
+            ))
+        } else if (query) {
+            pastes = <NoticeMessages messages={["No pastes matched that search."]}/>
+        } else {
+            pastes = <NoticeMessages messages={["This user has no pastes yet."]}/>
+        }
     }
     
     if (status) return <ErrorPage status={status}/>
@@ -145,7 +151,6 @@ const ShowUser = () => {
                 {pastes}
             </tbody>
         </table>
-
     </div>);
 }
 

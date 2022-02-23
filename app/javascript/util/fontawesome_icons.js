@@ -60,3 +60,11 @@ export const ListIcon = () => (
 export const LogoutIcon = () => (
     <i className="fa-solid fa-arrow-right-from-bracket"></i>
 )
+
+export const GithubIcon = () => (
+    <i className="fa-brands fa-github"></i>
+)
+
+export const LinkedinIcon = () => (
+    <i className="fa-brands fa-linkedin"></i>
+)
