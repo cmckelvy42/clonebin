@@ -33,7 +33,7 @@ class User < ApplicationRecord
     attr_reader :password
 
     def default_picture?
-        self.picture_url = '/assets/guest.png' if (!self.picture_url)
+        self.picture_url = ActionController::Base.helpers.asset_path("guest.png") if (!self.picture_url)
     end
     
     def reset_session_token
