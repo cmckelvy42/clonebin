@@ -116,7 +116,7 @@ a:hover {
  }
 
  #paste-btn {
-   background: #61ba65 url(/assets/add_2.png) no-repeat 8px 9px;
+   background: #61ba65 url(<%=asset_path 'add_2.png' %>) no-repeat 8px 9px;
     background-size: 13px 13px;
     border-radius: 3px;
     color: #fff;
@@ -423,18 +423,15 @@ button:active{
 }
 
 .info-bottom .username {
-   /* background: url(/themes/pastebin/img/user.png) no-repeat 0 4px; */
    background-size: 16px 16px;
 }
 
 .info-bottom .date {
-   /*background: url(/themes/pastebin/img/date.png) no-repeat 0 4px; */
    background-size: 16px 16px;
    margin-left: 8px;
 }
 
 .info-bottom .expire {
-   /*background: url(/themes/pastebin/img/expire.png) no-repeat 0 4px; */
    background-size: 16px 16px;
    margin-left: 8px;
 }
@@ -634,7 +631,7 @@ button:active{
    height: 30px;
    line-height: 30px;
    padding: 0 7px 0 34px;
-   background: #f7f7f7 url(/assets/search.png) no-repeat 7px 7px;
+   background: #f7f7f7 url(<%=asset_path 'search.png'%>) no-repeat 7px 7px;
    background-size: 16px;
    margin: 0;
    color: #000;
