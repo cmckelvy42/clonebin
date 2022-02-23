@@ -29,7 +29,7 @@ class User < ApplicationRecord
     validate :default_picture?
     after_initialize :ensure_session_token
 
-    has_many :pastes
+    has_many :pastes, dependent: :destroy
 
     attr_reader :password
 
