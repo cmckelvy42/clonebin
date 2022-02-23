@@ -25,6 +25,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'aws-sdk-s3'
 gem 'dotenv-rails'
 gem 'whenever'
+gem 'email_validator'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
