@@ -45,7 +45,13 @@ td, th {
    padding: 0;
    text-align: left;
 }
-
+i {
+   width: 16px;
+   height: 16px;
+   margin-right: 5px;
+   font-size: 16px;
+   color: #999;
+}
 a:hover {
    color:#666;
 }
@@ -559,13 +565,7 @@ button:active{
    margin-left: 20%;
    margin-top: 10px;
 }
-i {
-   width: 16px;
-   height: 16px;
-   margin-right: 5px;
-   font-size: 16px;
-   color: #999;
-}
+
 .sidebar-container i{
   float: left;
 }
