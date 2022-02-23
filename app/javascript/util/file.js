@@ -23,6 +23,8 @@ export const uploadImage = (file, url, dispatch) => (
         processData:false,
         contentType:false,
         error: function (request, status, error){
+            console.log(request)
+            console.log(error)
             dispatch(receiveErrors({responseJSON:{errors:["Invalid file."], status: status}}))
         }
     })

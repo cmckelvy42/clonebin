@@ -5,7 +5,6 @@ import { deleteUser, updateUser } from "../../actions/user_actions";
 import { getCSRFToken } from "../../util/misc"
 import { presignUrl } from "../../util/file";
 import ErrorMessages from "../Errors/error_messages";
-import $ from "jquery";
 
 export const Profile = () => {
     const currentUser = useSelector(state => state.session.currentUser);
@@ -15,10 +14,9 @@ export const Profile = () => {
     const [file, setFile] = useState(null)
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
-    const updateUserProfile = (user) => dispatch(updateUser(user, fileURLs, file));
+    const updateUserProfile = (user, urls=null) => dispatch(updateUser(user, urls, file));
     const deleteUserProfile = (userId) => dispatch(deleteUser(userId));
     const [saveSuccess, setSaveSuccess] = useState(null);
-    const status = useSelector(state=>state.errors.status);
 
     const SaveStatus = () => {
         if (saveSuccess === null) return null;
@@ -41,11 +39,21 @@ export const Profile = () => {
         let user = Object.assign({}, currentUser);
         if (email?.length > 0) user = Object.assign(user, {email:email});
         if (password?.length > 0) user = Object.assign(user, {password: password});
-        if (file) presignUrl(file).then(urls=>setFileURLs(urls));
-        updateUserProfile(user).then(() => {
+        if (file) {
+            presignUrl(file).then(urls=>{
+                updateUserProfile(user, urls).then(() => {
+                setPassword("");
+                setSaveSuccess(true)
+                }, ()=>saveSuccess = false)
+            })
+        } else {
+            updateUserProfile(user).then(() => {
             setPassword("");
             setSaveSuccess(true)
-        });
+            }, ()=>saveSuccess = false)
+        }
+    
+        
     }
 
     const deleteAccount = (e) => {

@@ -5,6 +5,7 @@ class Api::SessionsController < ApplicationController
         if @user.nil? || @user.id == 1
             render json: {errors:['Nope. Wrong credentials!']}, status: 401
         else
+            puts "here"
             login_user!(@user)
             render "/api/session/current_user"
         end
