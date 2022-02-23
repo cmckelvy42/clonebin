@@ -85,7 +85,7 @@ const ShowPaste = () => {
                     </div>
                 </div>
             </div>
-            <PasteTools currentUser={currentUser.id} user={paste.author.id} pasteId={pasteId}/>
+            <PasteTools currentUser={currentUser?.id} user={paste.author.id} pasteId={pasteId}/>
             <textarea readOnly value={paste.content}/>
         </div>
     </div>
