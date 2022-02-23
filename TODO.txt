@@ -1,0 +1,9 @@
+confirm popups for deletes
+footer with linkedin/github links
+rake task to autodelete expired pastes
+
+optional
+
+expanded list of recent public pastes
+add email notification thing from pastebin
+external auth options (sign in with google/facebook/twitter)

@@ -1,0 +1,1 @@
+json.extract! paste, :id, :title, :created_at
