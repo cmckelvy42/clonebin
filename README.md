@@ -1,9 +1,5 @@
 # Clonebin
 
-
-
-# Clonebin
-
 [Clonebin](https://powerful-meadow-58046.herokuapp.com/#/)
 Calonebin is a Full-Stack Project to clone [Pastebin](https://www.pastebin.com)
 
