@@ -89,7 +89,7 @@ const ShowUser = () => {
         if (sortTypes.includes(sortCategory) || sortTypes.includes(sortCategory?.slice(1, sortCategory?.length))){
             sortPastes(sortCategory)
         }
-        if (user.pastes.length > 0){
+        if (pastes.length > 0){
             pastes = pastes.map((paste, i) => (
                 <tr key={i}>
                     <td className="paste-title"><PrivacyIcon privacy={paste.privacy}/> <Link to={`/pastes/${paste.id}`}>{paste.title}</Link></td>

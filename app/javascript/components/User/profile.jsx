@@ -10,8 +10,7 @@ export const Profile = () => {
     const currentUser = useSelector(state => state.session.currentUser);
     const csrf_token = getCSRFToken();
     const [email, setEmail] = useState(currentUser.email);
-    const [fileURLs, setFileURLs] = useState(null)
-    const [file, setFile] = useState(null)
+    const [file, setFile] = useState(null);
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
     const updateUserProfile = (user, urls=null) => dispatch(updateUser(user, urls, file));
