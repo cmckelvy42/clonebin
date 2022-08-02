@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
   def show
     if @user && @user.id > 1
       if @user == current_user
-        if (params[:query])
+        if (params[:query].length)
           searchString = "%#{params[:query]}%".downcase
           @pastes = @user.pastes.where('LOWER(content) like ? OR LOWER(title) like ?', searchString, searchString)
         else
@@ -15,7 +15,7 @@ class Api::UsersController < ApplicationController
       else
           if (params[:query])
             searchString = "%#{params[:query]}%".downcase
-            @pastes = @user.pastes.where('LOWER(content) like ? OR LOWER(title) like ? AND privacy=0', searchString, searchString)
+            @pastes = @user.pastes.where('(LOWER(content) like ? OR LOWER(title) like ?) AND privacy=0', searchString, searchString)
           else
             @pastes = @user.pastes.where(privacy:0)
           end
